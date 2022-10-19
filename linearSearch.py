@@ -30,3 +30,23 @@ def locate_card(cards, query):
 evaluate_test_case(locate_card, test)
 
 
+def locate_card_linear(cards, query):
+    position = 0
+    while position < len(cards):
+        if cards[position] == query:
+            return position
+        position += 1
+    return -1
+
+
+large_test = {
+    "input": {
+        "cards": list(range(10000000, 0, -1)),
+        "query": 2
+    },
+    "output": 9999998
+}
+
+result, passed, runtime = evaluate_test_case(locate_card_linear, large_test, display=False)
+
+print(f"Result: {result} Passed: {passed} Runtime: {runtime}ms")
